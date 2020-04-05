@@ -1,3 +1,10 @@
-* {
-  box-sizing: border-box;
-}
+// Базовые настройки сетки
+@import 'grid';
+
+// Шрифты
+
+@import 'fonts';
+
+// Шапка сайта
+
+@import 'blocks/navbar';
