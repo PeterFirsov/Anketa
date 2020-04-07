@@ -1,7 +1,5 @@
 .nav {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  @include container;
 }
 
 .nav__toggle {
@@ -12,11 +10,11 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0;
-  padding: 0 148px;
+  @include list-killer;
+  padding-left: 148px;
+  padding-right: 148px;
   padding-top: 24px;
   padding-bottom: 21px;
-  list-style: none;
 }
 
 .nav__list-item {

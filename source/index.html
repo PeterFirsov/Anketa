@@ -38,25 +38,44 @@
     <div class="main__wrapper">
       <h1 class="main__title">Анкета</h1>
       <form class="main__form" action="https://echo.htmlacademy.ru" method="post">
-        <div class="main__form-item">
-          <h2 class="main__form-title">Личная информация</h2>
+        <div class="main__form-information">
+          <h2>Личная информация</h2>
+          <label>
+            <input name="name" type="text" aria-label="Имя" required autocomplete="on">
+            <span>ФИО</span>
+          </label>
+
+          <label>
+            <input name="date" type="text" aria-label="Дата рождения" required autocomplete="on">
+            <span>Год рождения</span>
+          </label>
+          <label for="">
+            <input name="adress" type="text" aria-label="Место проживания" required autocomplete="on">
+            <span>Место проживания</span>
+          </label>
+          <label for="">
+            <input name="skype" type="text" aria-label="Скайп" required autocomplete="on">
+            <span>Skype</span>
+          </label>
+          <label for="">
+            <input name="mail" type="email" aria-label="Электронная почта" required autocomplete="on">
+            <span>E-mail</span>
+          </label>
         </div>
-        <div class="main__form-item">
-          <h2 class="main__form-title">Расскажите о своем опыте</h2>
+        <div class="main__form-experience">
+          <h2>Расскажите о своем опыте</h2>
         </div>
-        <div class="main__form-item">
-          <h2 class="main__form-title">Уровень владения JavaScript</h2>
+        <div class="main__form-js">
+          <h2>Уровень владения JavaScript</h2>
         </div>
-        <div class="main__form-item">
-          <h2 class="main__form-title">Расскажите о себе</h2>
+        <div class="main__form-about">
+          <h2>Расскажите о себе</h2>
         </div>
-        <input class="free__form-name" name="name" type="text" placeholder="Имя" aria-label="Имя" required autocomplete="on">
-        <input class="free__form-tel" name="phone" type="tel" placeholder="Телефон" aria-label="Телефон" required autocomplete="on">
         <button class="free__form-button button button--form" type="submit">Отправить</button>
       </form>
     </div>
     <!-- /.hero -->
   </div>
-
+  <script src="js/script.js"></script>
 </body>
 </html>
