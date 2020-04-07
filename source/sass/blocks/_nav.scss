@@ -1,0 +1,35 @@
+.nav {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav__toggle {
+  display: none;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 148px;
+  padding-top: 24px;
+  padding-bottom: 21px;
+  list-style: none;
+}
+
+.nav__list-item {
+  margin-right: 20px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.nav__list-link {
+  font-size: 14px;
+  line-height: 35px;
+  color: #000000;
+  text-decoration: none;
+}

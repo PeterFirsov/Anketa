@@ -1,10 +1,14 @@
-// Базовые настройки сетки
-@import 'grid';
-
 // Шрифты
-
 @import 'fonts';
 
-// Шапка сайта
+// Базовые настройки сетки
+@import 'global';
 
-@import 'blocks/navbar';
+// Блок шапки сайта
+@import 'blocks/header';
+
+// Блок навигации
+@import 'blocks/nav';
+
+// Блок основной
+@import 'blocks/main';
