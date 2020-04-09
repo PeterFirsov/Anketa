@@ -43,18 +43,52 @@
     letter-spacing: 0.01em;
   }
 
+  .main__form-information,
+  .main__form-experience,
+  .main__form-js,
+  .main__form-about {
+    position: relative;
+    padding-top: 72px;
+
+    &::before {
+      @include icon;
+    }
+  }
+
+  .main__form-js {
+    padding-top: 69px;
+  }
+}
+
+.main__form-information {
+  margin-bottom: 50px;
+
+  h2 {
+    margin-bottom: 50px;
+  }
+
+  &::before {
+    background-image: url('../img/icon-info.svg');
+  }
+
+  .main__information-date {
+    position: relative;
+  }
+
   label {
     position: relative;
     display: block;
   }
 
-  input {
+  input[type=text],
+  input[type=email] {
     display: block;
     width: 67.5%;
     height: 60px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
+    padding-top: 14px;
     @include regular;
     font-size: 20px;
     font-weight: bolder;
@@ -63,6 +97,7 @@
     border-radius: 5px;
     background-color: transparent;
     outline: none;
+    transition: 0.3s;
 
     &:focus,
     &:hover {
@@ -70,8 +105,62 @@
     }
   }
 
-  input[name=date] {
+  .main__form-year-input {
+    position: relative;
+
+    input {
+      cursor: pointer;
+      width: 41.5%;
+    }
+  }
+
+  .main__select-box {
+    position: absolute;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    top: 65px;
+    left: 50%;
     width: 41.5%;
+    transform: translateX(-50%);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e6e6e6;
+    z-index: 5;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    &--active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      width: 5px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 5px;
+      height: 47px;
+      background: #dadada;
+      border-radius: 10px;
+    }
+
+    li {
+      padding: 10px;
+      cursor: pointer;
+      color: #345996;
+    }
   }
 
   span {
@@ -84,31 +173,101 @@
     font-size: 24px;
     color: #e6e6e6;
     z-index: -1;
+    transition: .3s;
   }
 
-  div {
-    position: relative;
-    padding-top: 72px;
-
-    &::before {
-      @include icon;
-    }
-  }
-}
-
-.main__form-information {
-  h2 {
-    margin-bottom: 50px;
-  }
-
-  &::before {
-    background-image: url('../img/icon-info.svg');
+  input:focus+span,
+  input:not(:focus):valid+span,
+  .main__form-year-span {
+    top: 5px;
+    font-size: 15px;
   }
 }
 
 .main__form-experience {
+  margin-bottom: 70px;
+
+  h2 {
+    margin-bottom: 43px;
+  }
+
   &::before {
     background-image: url('../img/icon-experience.svg');
+  }
+
+  .main__experience-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 40px;
+  }
+
+  label {
+    display: block;
+    position: relative;
+    text-align: left;
+    width: 190px;
+    @include light;
+    font-size: 16px;
+    line-height: 35px;
+    padding-left: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  label:nth-of-type(3n+3) {
+    width: 170px;
+    margin-right: 0;
+  }
+
+  .main__experience-indicator {
+    position: absolute;
+    left: -1px;
+    top: 7px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #42649d;
+    border-radius: 2px;
+    transition: .3s;
+  }
+
+  .main__experience-indicator::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 7px;
+    width: 2px;
+    height: 8px;
+    background-color: #ffffff;
+    transform: rotate(-45deg);
+    transition: .3s;
+  }
+
+  .main__experience-indicator::before {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 11px;
+    top: 5px;
+    width: 2px;
+    height: 9px;
+    background-color: #ffffff;
+    transform: rotate(40deg);
+    transition: .3s;
+  }
+
+  input[type="checkbox"]:checked + .main__experience-indicator::after,
+  input[type="checkbox"]:checked + .main__experience-indicator::before {
+    display: block;
+  }
+
+  input[type="checkbox"]:hover + .main__experience-indicator {
+    background-color: #e7f0ff;
+  }
+
+  input[type="checkbox"]:checked + .main__experience-indicator {
+    background-color: #345996;
   }
 }
 

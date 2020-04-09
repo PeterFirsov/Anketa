@@ -44,26 +44,75 @@
             <input name="name" type="text" aria-label="Имя" required="" autocomplete="on">
             <span>ФИО</span>
           </label>
-
+          <div class="main__form-year-input">
+            <label>
+              <input class="main__form-input" name="year" type="text" aria-label="Год" readonly="" required="" autocomplete="off">
+              <span>Год рождения</span>
+            </label>
+            <ul class="main__select-box"></ul>
+          </div>
           <label>
-            <input name="date" type="text" aria-label="Дата рождения" required="" autocomplete="on">
-            <span>Год рождения</span>
-          </label>
-          <label for="">
             <input name="adress" type="text" aria-label="Место проживания" required="" autocomplete="on">
             <span>Место проживания</span>
           </label>
-          <label for="">
+          <label>
             <input name="skype" type="text" aria-label="Скайп" required="" autocomplete="on">
             <span>Skype</span>
           </label>
-          <label for="">
+          <label>
             <input name="mail" type="email" aria-label="Электронная почта" required="" autocomplete="on">
             <span>E-mail</span>
           </label>
         </div>
         <div class="main__form-experience">
           <h2>Расскажите о своем опыте</h2>
+          <div class="main__experience-wrapper">
+            <label>
+              <input class="visually-hidden" type="checkbox" name="БЭМ/OOCSS" checked="">
+              <span class="main__experience-indicator"></span>
+              БЭМ/OOCSS
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="Верстаю семантично" checked="">
+              <span class="main__experience-indicator"></span>
+              Верстаю семантично
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="Webpack">
+              <span class="main__experience-indicator"></span>
+              Webpack
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="Stylus/LESS/SASS" checked="">
+              <span class="main__experience-indicator"></span>
+              Stylus/LESS/SASS
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="ES2015/ES2016">
+              <span class="main__experience-indicator"></span>
+              ES2015/ES2016
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="jQuery">
+              <span class="main__experience-indicator"></span>
+              jQuery
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="Работаю с SVG" checked="">
+              <span class="main__experience-indicator"></span>
+              Работаю с SVG
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="Gulp/GRUNT" checked="">
+              <span class="main__experience-indicator"></span>
+              Gulp/GRUNT
+            </label>
+            <label>
+              <input class="visually-hidden" type="checkbox" name="Ипользую Git" checked="">
+              <span class="main__experience-indicator"></span>
+              Ипользую Git
+            </label>
+          </div>
         </div>
         <div class="main__form-js">
           <h2>Уровень владения JavaScript</h2>
