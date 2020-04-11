@@ -16,7 +16,6 @@
   z-index: -1;
 }
 
-
 .main__wrapper {
   @include container;
   padding: 0 15px;
@@ -108,6 +107,24 @@
   .main__form-year-input {
     position: relative;
 
+    &::after {
+      content: "";
+      position: absolute;
+      top: 24px;
+      right: 245px;
+      width: 15px;
+      height: 9px;
+      background-image: url('../img/arrow.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      transition: .3s;
+    }
+
+    &--active::after {
+      transform: rotate(180deg);
+    }
+
     input {
       cursor: pointer;
       width: 41.5%;
@@ -125,15 +142,21 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 12px;
     max-height: 300px;
     overflow-y: auto;
     border: 1px solid #e6e6e6;
+    border-radius: 5px;
     z-index: 5;
     -ms-overflow-style: none;
     scrollbar-width: none;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.2);
+
 
     &--active {
       visibility: visible;
@@ -141,7 +164,7 @@
     }
 
     &::-webkit-scrollbar {
-      width: 5px;
+      width: 15px;
     }
 
     &::-webkit-scrollbar-track {
@@ -151,9 +174,10 @@
 
     &::-webkit-scrollbar-thumb {
       width: 5px;
-      height: 47px;
+      height: 120px;
       background: #dadada;
       border-radius: 10px;
+      border: 5px solid white;
     }
 
     li {
@@ -176,8 +200,8 @@
     transition: .3s;
   }
 
-  input:focus+span,
-  input:not(:focus):valid+span,
+  & > label input:focus+span,
+  & > label input:not(:focus):valid+span,
   .main__form-year-span {
     top: 5px;
     font-size: 15px;
@@ -272,8 +296,144 @@
 }
 
 .main__form-js {
+  margin-bottom: 105px;
+
+  h2 {
+    margin-bottom: 70px;
+  }
+
   &::before {
     background-image: url('../img/icon-js.svg');
+  }
+
+  .range {
+    position: relative;
+    top: -4px;
+    max-width: 770px;
+    width: 100%;
+    height: 14px;
+    margin: 0 auto;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 10px solid #ffffff;
+      border-right: 770px solid transparent;
+    }
+  }
+
+  .range input {
+    width: 100%;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 0;
+    -webkit-appearance: none;
+
+    // Thumb
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none; // needed again for Chrome & Safari
+      @include rangeThumb;
+    }
+
+    &::-moz-range-thumb {
+      @include rangeThumb;
+    }
+
+    &::-ms-thumb {
+      @include rangeThumb;
+    }
+
+    // Track
+    &::-webkit-slider-runnable-track {
+      @include rangeTrack;
+    }
+
+    &::-moz-range-track {
+      @include rangeTrack;
+    }
+
+    &::-ms-track {
+      @include rangeTrack;
+    }
+
+    &:focus { // override outline/background on focus
+      background: none;
+      outline: none;
+    }
+
+    &::-ms-track { // A little somethin' somethin' for IE
+      width: 100%;
+      cursor: pointer;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+  }
+
+  // Labels below slider
+  .range-labels {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      display: block;
+      text-align: left;
+      color: #000000;
+      font-size: 13px;
+      line-height: 18px;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        top: 41px;
+        left: 2px;
+        content: "";
+        margin: 0 auto;
+        width: 1px;
+        height: 19px;
+        border-left: 1px dotted #000000;
+        z-index: 2;
+      }
+    }
+
+    li:nth-of-type(1) {
+      width: 191px;
+
+      &::before {
+        top: 21px;
+        left: 0;
+      }
+    }
+
+    li:nth-of-type(2) {
+      width: 170px;
+      top: -19px;
+      margin-right: 21px;
+    }
+
+    li:nth-of-type(3) {
+      width: 180px;
+      top: -19px;
+      margin-right: 56px;
+    }
+
+    li:nth-of-type(4) {
+      width: auto;
+
+      &::before {
+        top: 21px;
+        right: -1px;
+        left: auto;
+      }
+    }
   }
 }
 

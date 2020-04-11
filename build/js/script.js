@@ -2,10 +2,12 @@
 
 var START_YEAR = 1970;
 var END_YEAR = 2000;
-var yearInput = document.querySelector('.main__form-year-input input');
+var yearWrapper = document.querySelector('.main__form-year-input');
+var yearInput = document.querySelector('.main__form-input');
 var yearList = document.querySelector('.main__select-box');
 var yearSpan = document.querySelector('.main__form-year-input span');
 var nextInput = document.querySelector('.main__form-information input[name=adress]');
+var preInput = document.querySelector('.main__form-information input[name=name]');
 
 
 var createYearListItem = function () {
@@ -20,6 +22,9 @@ var createYearListItem = function () {
 
 var closeList = function () {
   yearList.classList.remove('main__select-box--active');
+  yearWrapper.classList.remove('main__form-year-input--active');
+  nextInput.removeEventListener('focus', closeList);
+  preInput.removeEventListener('focus', closeList);
 };
 
 var documentClickHandler = function (evt) {
@@ -27,6 +32,7 @@ var documentClickHandler = function (evt) {
     closeList();
     document.removeEventListener('click', documentClickHandler);
     nextInput.removeEventListener('focus', closeList);
+    preInput.removeEventListener('focus', closeList);
   }
 };
 
@@ -45,11 +51,52 @@ if (yearList) {
     yearInput.value = '';
     yearSpan.classList.remove('main__form-year-span');
     yearList.classList.add('main__select-box--active');
+    yearWrapper.classList.add('main__form-year-input--active');
     setTimeout(function () {
       document.addEventListener('click', documentClickHandler);
       nextInput.addEventListener('focus', closeList);
+      preInput.addEventListener('focus', closeList);
     }, 100);
 
   });
-
 }
+
+var sheet = document.createElement('style'),
+  $rangeInput = $('.range input'),
+  prefs = ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'];
+
+document.body.appendChild(sheet);
+
+var getTrackStyle = function (el) {
+  var curVal = el.value,
+      val = (curVal - 1) * 33.3333333,
+      style = '';
+
+  // Set active label
+  $('.range-labels li').removeClass('active selected');
+
+  var curLabel = $('.range-labels').find('li:nth-child(' + curVal + ')');
+
+  curLabel.addClass('active selected');
+  curLabel.prevAll().addClass('selected');
+
+  // Change background gradient
+  for (var i = 0; i < prefs.length; i++) {
+    style += '.range {background: linear-gradient(to right, #d7b2f4 0%, #5a5696 ' + val + '%, #fff ' + val + '%, #fff 100%)}';
+    style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #b2b2b2 ' + val + '%, #b2b2b2 100%)}';
+  }
+
+  return style;
+}
+
+$rangeInput.on('input', function () {
+  sheet.textContent = getTrackStyle(this);
+});
+
+// Change input value on label click
+$('.range-labels li').on('click', function () {
+  var index = $(this).index();
+
+  $rangeInput.val(index + 1).trigger('input');
+
+});
