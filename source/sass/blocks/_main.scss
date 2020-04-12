@@ -16,6 +16,12 @@
   z-index: -1;
 }
 
+@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+  .main__background-picture {
+    background-image: linear-gradient(to bottom, transparent 35%, white 90%), url('../img/ian-froome@3x.jpg');
+  }
+}
+
 .main__wrapper {
   @include container;
   padding: 0 15px;
@@ -104,6 +110,13 @@
     }
   }
 
+  @media (max-width: 768px) {
+    input[type=text],
+    input[type=email] {
+      font-size: 18px;
+    }
+  }
+
   .main__form-year-input {
     position: relative;
 
@@ -128,6 +141,21 @@
     input {
       cursor: pointer;
       width: 41.5%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main__form-year-input {
+
+      &::after {
+        top: 60px;
+        right: 50%;
+        width: 15px;
+        height: 9px;
+        margin-right: -7.5px;
+        background-image: url('../img/arrow.svg');
+        z-index: 5;
+      }
     }
   }
 
@@ -206,6 +234,28 @@
     top: 5px;
     font-size: 15px;
   }
+
+  @media (max-width: 768px) {
+    span {
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      width: 236px;
+      margin-left: -118px;
+      @include regular;
+      font-size: 20px;
+      color: #e6e6e6;
+      z-index: -1;
+      transition: .3s;
+    }
+
+    & > label input:focus+span,
+    & > label input:not(:focus):valid+span,
+    .main__form-year-span {
+      top: 5px;
+      font-size: 15px;
+    }
+  }
 }
 
 .main__form-experience {
@@ -242,6 +292,13 @@
   label:nth-of-type(3n+3) {
     width: 170px;
     margin-right: 0;
+  }
+
+  @media (max-width: 768px) {
+    label:nth-of-type(3n+3) {
+      width: 190px;
+      margin-right: 20px;
+    }
   }
 
   .main__experience-indicator {
@@ -296,85 +353,44 @@
 }
 
 .main__form-js {
-  margin-bottom: 105px;
+  margin-bottom: 107px;
 
   h2 {
-    margin-bottom: 70px;
+    margin-bottom: 66px;
   }
 
   &::before {
     background-image: url('../img/icon-js.svg');
   }
 
-  .range {
-    position: relative;
-    top: -4px;
-    max-width: 770px;
-    width: 100%;
+  .ui-slider.ui-slider-horizontal {
+    background: #e7e7e7;
     height: 14px;
-    margin: 0 auto;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-top: 10px solid #ffffff;
-      border-right: 770px solid transparent;
-    }
+    border:none;
+    border-radius: unset;
   }
 
-  .range input {
-    width: 100%;
-    position: absolute;
-    top: 2px;
-    left: 0;
-    height: 0;
-    -webkit-appearance: none;
+  .ui-slider .ui-slider-handle {
+    width: 23px;
+    height: 26px;
+    border: none;
+    top: 15px;
+    cursor:pointer;
+    background: transparent;
+    background-image: url('../img/cursor.svg');
+    outline: none;
+  }
 
-    // Thumb
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none; // needed again for Chrome & Safari
-      @include rangeThumb;
-    }
-
-    &::-moz-range-thumb {
-      @include rangeThumb;
-    }
-
-    &::-ms-thumb {
-      @include rangeThumb;
-    }
-
-    // Track
-    &::-webkit-slider-runnable-track {
-      @include rangeTrack;
-    }
-
-    &::-moz-range-track {
-      @include rangeTrack;
-    }
-
-    &::-ms-track {
-      @include rangeTrack;
-    }
-
-    &:focus { // override outline/background on focus
-      background: none;
-      outline: none;
-    }
-
-    &::-ms-track { // A little somethin' somethin' for IE
-      width: 100%;
-      cursor: pointer;
-      background: transparent;
-      border-color: transparent;
-      color: transparent;
-    }
+  .ui-slider .ui-slider-range {
+    background: linear-gradient(to right, #d7b2f4 0%, #5a5696 100%);
+    height: 14px;
+    border-radius: unset;
   }
 
   // Labels below slider
   .range-labels {
+    position: relative;
+    top: 4px;
     display: flex;
     justify-content: flex-start;
     margin: 0;
@@ -398,7 +414,7 @@
         content: "";
         margin: 0 auto;
         width: 1px;
-        height: 19px;
+        height: 23px;
         border-left: 1px dotted #000000;
         z-index: 2;
       }
@@ -430,15 +446,134 @@
 
       &::before {
         top: 21px;
-        right: -1px;
+        right: -2px;
         left: auto;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    // Labels below slider
+    .range-labels {
+      position: relative;
+      top: 0;
+      display: flex;
+      justify-content: flex-start;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 0;
+      list-style: none;
+
+      li {
+        position: relative;
+        display: block;
+        text-align: left;
+        color: #000000;
+        font-size: 10px;
+        line-height: 12px;
+        cursor: pointer;
+
+        &::before {
+          position: absolute;
+          top: 41px;
+          left: 2px;
+          content: "";
+          margin: 0 auto;
+          width: 1px;
+          height: 19px;
+          border-left: 1px dotted #000000;
+        }
+      }
+
+      li:nth-of-type(1) {
+        width: 191px;
+
+        &::before {
+          top: 21px;
+          left: 0;
+        }
+      }
+
+      li:nth-of-type(2) {
+        width: 170px;
+        top: -19px;
+        margin-right: 21px;
+      }
+
+      li:nth-of-type(3) {
+        width: 180px;
+        top: -19px;
+        margin-right: 56px;
+      }
+
+      li:nth-of-type(4) {
+        width: auto;
+
+        &::before {
+          top: 21px;
+          right: -1px;
+          left: auto;
+        }
       }
     }
   }
 }
 
 .main__form-about {
+  top: -2px;
+  margin-bottom: 68px;
+
+  h2 {
+    margin-bottom: 12px;
+  }
+
   &::before {
     background-image: url('../img/icon-about-2.svg');
   }
+
+  .main__about-text {
+    max-width: 495px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 35px;
+    line-height: 25px;
+  }
+
+  textarea {
+    display: block;
+    max-width: 520px;
+    width: 100%;
+    height: 180px;
+    padding-top: 18px;
+    padding-left: 22px;
+    padding-right: 21px;
+    margin-left: auto;
+    margin-right: auto;
+    @include regular;
+    font-size: 20px;
+    font-weight: bolder;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s;
+    resize: none;
+    overflow: auto;
+
+    &:focus,
+    &:hover {
+      border-color: #345996;
+    }
+
+    &::placeholder {
+      @include light;
+      color: #e6e6e6;
+    }
+  }
+}
+
+.main__form-button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
 }

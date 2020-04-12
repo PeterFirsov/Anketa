@@ -8,7 +8,14 @@ var yearList = document.querySelector('.main__select-box');
 var yearSpan = document.querySelector('.main__form-year-input span');
 var nextInput = document.querySelector('.main__form-information input[name=adress]');
 var preInput = document.querySelector('.main__form-information input[name=name]');
+var menuButton = document.querySelector('.nav__toggle');
+var menuNav = document.querySelector('.nav__list');
 
+menuButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  menuNav.classList.toggle('nav__list--active');
+  menuButton.classList.toggle('nav__toggle--active');
+});
 
 var createYearListItem = function () {
   yearList.innerHTML = '';
@@ -39,6 +46,10 @@ var documentClickHandler = function (evt) {
 if (yearList) {
   createYearListItem();
 
+  if (yearInput.value) {
+    yearSpan.classList.add('main__form-year-span');
+  }
+
   var listItem = document.querySelectorAll('.main__select-option');
   listItem.forEach(function (el) {
     el.addEventListener('click', function () {
@@ -47,6 +58,7 @@ if (yearList) {
       closeList();
     });
   });
+
   yearInput.addEventListener('focus', function () {
     yearInput.value = '';
     yearSpan.classList.remove('main__form-year-span');
@@ -61,42 +73,41 @@ if (yearList) {
   });
 }
 
-var sheet = document.createElement('style'),
-  $rangeInput = $('.range input'),
-  prefs = ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'];
+$(function() {
+  var values = [0, 194, 385, 770];
+  var slider = $("#polzunok").slider({
+    orientation: 'horizontal',
+    min: values[0],
+    max: values[values.length - 1],
+    value: values[1],
+    animate: "slow",
+    range: "min",
 
-document.body.appendChild(sheet);
+    slide: function(event, ui) {
+      var includeLeft = event.keyCode != $.ui.keyCode.RIGHT;
+      var includeRight = event.keyCode != $.ui.keyCode.LEFT;
+      var value = findNearest(includeLeft, includeRight, ui.value);
+      slider.slider('value', value);
 
-var getTrackStyle = function (el) {
-  var curVal = el.value,
-      val = (curVal - 1) * 33.3333333,
-      style = '';
-
-  // Set active label
-  $('.range-labels li').removeClass('active selected');
-
-  var curLabel = $('.range-labels').find('li:nth-child(' + curVal + ')');
-
-  curLabel.addClass('active selected');
-  curLabel.prevAll().addClass('selected');
-
-  // Change background gradient
-  for (var i = 0; i < prefs.length; i++) {
-    style += '.range {background: linear-gradient(to right, #d7b2f4 0%, #5a5696 ' + val + '%, #fff ' + val + '%, #fff 100%)}';
-    style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #b2b2b2 ' + val + '%, #b2b2b2 100%)}';
-  }
-
-  return style;
-}
-
-$rangeInput.on('input', function () {
-  sheet.textContent = getTrackStyle(this);
+      $("#amount").val('$' + slider.slider('value'));
+      return false;
+    }
 });
 
-// Change input value on label click
-$('.range-labels li').on('click', function () {
-  var index = $(this).index();
+  function findNearest(includeLeft, includeRight, value) {
+    var nearest = null;
+    var diff = null;
+    for (var i = 0; i < values.length; i++) {
+      if ((includeLeft && values[i] <= value) || (includeRight && values[i] >= value)) {
+        var newDiff = Math.abs(value - values[i]);
+        if (diff == null || newDiff < diff) {
+          nearest = values[i];
+          diff = newDiff;
+        }
+      }
+    }
+    return nearest;
+  }
 
-  $rangeInput.val(index + 1).trigger('input');
-
+$("#amount").val('$' + slider.slider('value'));
 });

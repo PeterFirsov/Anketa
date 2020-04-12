@@ -7,7 +7,10 @@
   <title>Анкета для Web-мастерской</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css">
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
 </head>
 <body>
 
@@ -18,16 +21,16 @@
       </button>
       <ul class="nav__list">
         <li class="nav__list-item">
-          <a href="#" class="nav__list-link">Личная информация</a>
+          <a href="#preson" class="nav__list-person">Личная информация</a>
         </li>
         <li class="nav__list-item">
-          <a href="#" class="nav__list-link">Опыт</a>
+          <a href="#exp" class="nav__list-exp">Опыт</a>
         </li>
         <li class="nav__list-item">
-          <a href="#" class="nav__list-link">JavaScript</a>
+          <a href="#JS" class="nav__list-JS">JavaScript</a>
         </li>
         <li class="nav__list-item">
-          <a href="#" class="nav__list-link">О себе</a>
+          <a href="#about" class="nav__list-about">О себе</a>
         </li>
       </ul>
     </div>
@@ -40,6 +43,7 @@
       <h1 class="main__title">Анкета</h1>
       <form class="main__form" action="https://echo.htmlacademy.ru" method="post">
         <div class="main__form-information">
+          <a name="person"></a>
           <h2>Личная информация</h2>
           <label>
             <input name="name" type="text" aria-label="Имя" required="" autocomplete="on">
@@ -66,6 +70,7 @@
           </label>
         </div>
         <div class="main__form-experience">
+          <a name="exp"></a>
           <h2>Расскажите о своем опыте</h2>
           <div class="main__experience-wrapper">
             <label>
@@ -116,30 +121,29 @@
           </div>
         </div>
         <div class="main__form-js">
+          <a name="JS"></a>
           <h2>Уровень владения JavaScript</h2>
           <ul class="range-labels">
-            <li class="active selected">Не владею</li>
+            <li>Не владею</li>
             <li>Использую готовые
               решения</li>
             <li>Использую готовые решения
               и умею и переделывать</li>
             <li>Пишу сложный JS с нуля</li>
           </ul>
-          <div class="range">
-            <input type="range" min="1" max="4" steps="1" value="1">
-          </div>
-
+          <div id="polzunok"></div>
         </div>
         <div class="main__form-about">
+          <a name="about"></a>
           <h2>Расскажите о себе</h2>
+          <p class="main__about-text">Напишите несколько предложений, чем привлекла наша вакансия
+            и что вы ожидаете от работы у нас</p>
+            <textarea name="letter" placeholder="Понравилась тем, что..." aria-label="Понравилась тем, что..." required=""></textarea>
         </div>
-        <button class="free__form-button button button--form" type="submit">Отправить</button>
+        <button class="main__form-button button" type="submit">Готово</button>
       </form>
     </div>
-    <!-- /.hero -->
   </div>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

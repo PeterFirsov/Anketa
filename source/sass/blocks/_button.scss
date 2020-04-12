@@ -1,0 +1,17 @@
+.button {
+  width: 114px;
+  padding-top: 14px;
+  padding-bottom: 18px;
+  @include light;
+  color: #ffffff;
+  background-color: #345996;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0px 3px 18px 0px rgba(87, 136, 182, 0.9);
+    background-color: #4c7ac4;
+  }
+}
