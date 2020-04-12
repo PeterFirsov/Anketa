@@ -46,26 +46,26 @@
           <a name="person"></a>
           <h2>Личная информация</h2>
           <label>
-            <input name="name" type="text" aria-label="Имя" required autocomplete="on">
+            <input name="name" type="text" value="Фирсов Петр Викторович" aria-label="Имя" required autocomplete="on">
             <span>ФИО</span>
           </label>
           <div class="main__form-year-input">
             <label>
-              <input class="main__form-input" name="year" type="text" aria-label="Год" readonly required autocomplete="off">
+              <input class="main__form-input" name="year" type="text" value="1993" aria-label="Год" readonly required autocomplete="off">
               <span>Год рождения</span>
             </label>
             <ul class="main__select-box"></ul>
           </div>
           <label>
-            <input name="adress" type="text" aria-label="Место проживания" required autocomplete="on">
+            <input name="adress" type="text" value="г. Москва" aria-label="Место проживания" required autocomplete="on">
             <span>Место проживания</span>
           </label>
           <label>
-            <input name="skype" type="text" aria-label="Скайп" required autocomplete="on">
+            <input name="skype" type="text" value="firsov peter" aria-label="Скайп" required autocomplete="on">
             <span>Skype</span>
           </label>
           <label>
-            <input name="mail" type="email" aria-label="Электронная почта" required autocomplete="on">
+            <input name="mail" type="email" value="pvfirsov15@yandex.ru" aria-label="Электронная почта" required autocomplete="on">
             <span>E-mail</span>
           </label>
         </div>
@@ -99,7 +99,7 @@
               ES2015/ES2016
             </label>
             <label>
-              <input class="visually-hidden" type="checkbox" name="jQuery">
+              <input class="visually-hidden" type="checkbox" name="jQuery" checked>
               <span class="main__experience-indicator"></span>
               jQuery
             </label>
@@ -138,7 +138,15 @@
           <h2>Расскажите о себе</h2>
           <p class="main__about-text">Напишите несколько предложений, чем привлекла наша вакансия
             и что вы ожидаете от работы у нас</p>
-            <textarea name="letter" placeholder="Понравилась тем, что..." aria-label="Понравилась тем, что..." required></textarea>
+            <textarea name="letter" placeholder="Понравилась тем, что..." aria-label="Понравилась тем, что..." required>
+              Я заинтересовался версткой в январе 2019 года, тогда же я записался на полный курс верстки в HTML Academy.
+              Там я прошел три курса: HTML и CSS (2 уровня) + JS (1 уровень). Успешно защитил итоговые проекты (размещены в моем профиле на Github).
+              Сразу по окончанию учебы не было возможности найти работу по профессии. Сейчас оно появилось и я хочу активно прогрессировать в данной области.
+              Ваша вакансия привлекла меня тем, что я уже видел ее в интерфейсе "Центра карьеры" в Академии. А это значит, что вы уже знакомы с ее выпускниками.
+              Работая у вас, я рассчитываю получить необходимый профессиональный опыт на реальных проектах, старших товарищей, которые могут поделиться своими знаниями и умениями.
+              Готов активно развиваться, совершенствовать свои навыки верстки и программирования для качественного роста.
+              Буду рад сотрудничеству!
+            </textarea>
         </div>
         <button class="main__form-button button" type="submit">Готово</button>
       </form>

@@ -89,7 +89,6 @@ $(function() {
       var value = findNearest(includeLeft, includeRight, ui.value);
       slider.slider('value', value);
 
-      $("#amount").val('$' + slider.slider('value'));
       return false;
     }
 });
@@ -108,6 +107,4 @@ $(function() {
     }
     return nearest;
   }
-
-$("#amount").val('$' + slider.slider('value'));
 });
